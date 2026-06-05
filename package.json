@@ -1,0 +1,25 @@
+{
+  "name": "saucedemo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "smoke": "playwright test -g @smoke",
+    "regression": "playwright test -g @regression",
+    "login": "playwright test -g @login",
+    "inventory": "playwright test -g @inventory",
+    "cart": "playwright test -g @cart",
+    "checkout": "playwright test -g @checkout"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.60.0",
+    "@types/node": "^25.9.1"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2"
+  }
+}
