@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "playwright test",
-    "smoke": "playwright test -g @smoke",
+    "smoke": "playwright test --grep @smoke --project=chromium",
     "regression": "playwright test -g @regression",
     "login": "playwright test -g @login",
     "inventory": "playwright test -g @inventory",
