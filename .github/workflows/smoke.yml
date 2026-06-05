@@ -11,9 +11,7 @@ on:
 
 jobs:
   smoke:
-    name: Run Smoke Suite
     runs-on: ubuntu-latest
-
     timeout-minutes: 30
 
     steps:
@@ -31,6 +29,13 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps chromium
 
+      - name: Create .env.qa file
+        run: |
+          mkdir -p env
+          echo "BASE_URL=${{ secrets.BASE_URL }}" > env/.env.qa
+          echo "STANDARD_USER=${{ secrets.STANDARD_USER }}" >> env/.env.qa
+          echo "PASSWORD=${{ secrets.PASSWORD }}" >> env/.env.qa
+
       - name: Run Smoke Tests
         run: npx playwright test --grep @smoke --project=chromium
 
@@ -38,14 +43,6 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: smoke-playwright-report
+          name: playwright-smoke-report
           path: playwright-report/
-          retention-days: 30
-
-      - name: Upload Test Results
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: smoke-test-results
-          path: test-results/
           retention-days: 30
