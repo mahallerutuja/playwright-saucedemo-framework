@@ -33,8 +33,8 @@ jobs:
         run: |
           mkdir -p env
           echo "BASE_URL=${{ secrets.BASE_URL }}" > env/.env.qa
-          echo "STANDARD_USER=${{ secrets.STANDARD_USER }}" >> env/.env.qa
-          echo "PASSWORD=${{ secrets.PASSWORD }}" >> env/.env.qa
+          echo "STANDARD_USERNAME=${{ secrets.STANDARD_USER }}" >> env/.env.qa
+          echo "STANDARD_PASSWORD=${{ secrets.PASSWORD }}" >> env/.env.qa
 
       - name: Run Smoke Tests
         run: npx playwright test --grep @smoke --project=chromium
